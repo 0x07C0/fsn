@@ -1,11 +1,11 @@
 [package]
 name = "fsn"
-version = "0.1.2"
+version = "0.1.3"
 authors = [ "Viktor D. <dudnik.0x76@gmail.com>" ]
 description = "File Structure Notation (.fsn) format parser"
 license = "MIT"
 edition = "2021"
-exclude = ["/examples/*"]
+exclude = ["/examples/*", "src/main.rs"]
 
 [lib]
 path = "src/lib.rs"
