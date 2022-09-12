@@ -23,11 +23,12 @@ pub fn parse_file(path: &Path) -> io::Result<Structure> {
                 files: vec![],
             };
             let dir_pattern = Regex::new(r"^\[:(.*)\]$").unwrap();
-            let file_pattern = Regex::new(r"^\[(?!EOF)(?!:)(.*)\]$").unwrap();
+            let file_pattern = Regex::new(r"^\[(.*)\]$").unwrap(); // Look aheads aren't supported
             for caps in dir_pattern.captures_iter(&s) {
                 strc.directories.push(caps[1].to_owned())
             }
             for caps in file_pattern.captures_iter(&s) {
+                if caps[1] == "EOF".to_owned() {continue}
                 let mut file: FileData = FileData {
                     name: String::default(),
                     contents: String::default(),
