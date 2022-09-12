@@ -7,12 +7,12 @@ use std::{
 use regex::Regex;
 
 pub struct FileData {
-    name: String,
-    contents: String,
+    pub name: String,
+    pub contents: String,
 }
 pub struct Structure {
-    directories: Vec<String>,
-    files: Vec<FileData>,
+    pub directories: Vec<String>,
+    pub files: Vec<FileData>,
 }
 
 pub fn parse_file(path: &Path) -> io::Result<Structure> {
