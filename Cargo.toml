@@ -1,9 +1,15 @@
 [package]
 name = "fsn"
-version = "0.0.0"
+version = "0.1.0"
 authors = [ "Viktor D. <dudnik.0x76@gmail.com>" ]
 description = "File Structure Notation (.fsn) format parser"
 license = "MIT"
 edition = "2021"
+exclude = ["/examples/*"]
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["lib"]
 
 [dependencies]
+regex = "1.6.0"
