@@ -5,7 +5,7 @@ File Structure Notation (.fsn) format parser
 ```
 $ cargo add fsn
 ```
-or add `fsn = "0.1.3"` to `[dependencies]` in `Cargo.toml`
+or add `fsn = "0.1.4"` to `[dependencies]` in `Cargo.toml`
 
 **Examples**
 ```
