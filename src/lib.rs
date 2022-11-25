@@ -2,21 +2,45 @@ use std::{error::Error, fs::read_to_string, path::Path};
 
 use regex::Regex;
 
+/// Describes file with it's name and contents.
 pub struct FileData {
     pub name: String,
     pub contents: String,
 }
+/// Describes directory and file structute.
 pub struct Structure {
     pub directories: Vec<String>,
     pub files: Vec<FileData>,
 }
 
+/// Parses FSN format file into Structure struct.
+/// # Examples 
+/// 
+/// ```
+/// use std::path::Path;
+/// let structure = fsn::parse_file(Path::new("./examples/test.fsn")).unwrap();
+/// assert_eq!(structure.directories, vec!["test", "rust/doc"]);
+/// assert_eq!(structure.files[0].name, "hello");
+/// assert_eq!(structure.files[0].contents, "world\n");
 pub fn parse_file(path: &Path) -> Result<Structure, Box<dyn Error>> {
     let string = read_to_string(path)?;
 
     parse_string(&string)
 }
 
+/// Parses FSN format string into Structure struct.
+/// # Examples 
+/// 
+/// ```
+/// let string = "\
+/// [:test]
+/// [hello]
+/// world
+/// [EOF]".to_owned();
+/// let structure = fsn::parse_string(&string).unwrap();
+/// assert_eq!(structure.directories, vec!["test"]);
+/// assert_eq!(structure.files[0].name, "hello");
+/// assert_eq!(structure.files[0].contents, "world\n");
 pub fn parse_string(s: &String) -> Result<Structure, Box<dyn Error>> {
     let mut structure: Structure = Structure {
         directories: vec![],
