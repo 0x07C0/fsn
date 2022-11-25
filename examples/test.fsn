@@ -1,0 +1,7 @@
+[:test]
+[:rust/doc]
+[hello]
+world
+[EOF]
+[empty]
+[EOF]
